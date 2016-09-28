@@ -17,23 +17,23 @@ RUN export TERM=xterm \
     nginx \
     net-tools \
     nano \
-    php7.0-dev \
-    php7.0-cli \
-    php7.0-intl \
+    php-dev \
+    php-cli \
+    php-intl \
     php-soap \
-    php7.0-json \
-    php7.0-curl \
-    php7.0-fpm \
+    php-json \
+    php-curl \
+    php-fpm \
     php-pear \
-    php7.0-gd \
-    php7.0-pgsql \
-    php7.0-mysql \
-    php7.0-mcrypt \
-    php7.0-memcached \
-    php7.0-memcache \
-    php7.0-xdebug \
-    php7.0-ldap \
-    php7.0-imagick \
+    php-gd \
+    php-pgsql \
+    php-mysql \
+    php-mcrypt \
+    php-memcached \
+    php-memcache \
+    php-xdebug \
+    php-ldap \
+    php-imagick \
     && apt-get autoremove -y \
     && apt-get clean \
     && apt-get autoclean
@@ -64,7 +64,7 @@ RUN adduser --disabled-password --gecos '' www \
 
 ADD default /etc/nginx/sites-available/
 
-ADD xdebug.ini /etc/php7.0/mods-available
+ADD xdebug.ini /etc/php7.0/mods-available   
 
 ADD nginx.crt /etc/nginx/ssl/
 
