@@ -1,0 +1,71 @@
+server {
+   listen 80;
+   server_name www.localhost;
+   rewrite ^/(.*) https://localhost/$1 permanent;
+}
+
+server {
+   listen 80;
+   server_name localhost;
+   rewrite ^/(.*) https://localhost/$1 permanent;
+}
+
+server {
+   listen 80;
+   listen 443 ssl;
+
+   root /home/www/public/;
+   index index.php index.html index.htm;
+
+   server_name localhost;
+
+   ssl_certificate /etc/nginx/ssl/nginx.crt;
+   ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+   gzip on;
+   gzip_disable "msie6";
+   gzip_vary on;
+   gzip_proxied any;
+   gzip_comp_level 6;
+   gzip_buffers 16 8k;
+   gzip_http_version 1.1;
+   gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;	
+
+   log_format custom '$remote_addr - $remote_user [$time_local] '
+	   '"$request" $status $body_bytes_sent '
+	   '"$http_referer" "$http_user_agent" "$request_body"';
+
+   access_log /var/log/nginx/access.log custom;
+
+   client_max_body_size 5000M;
+
+   location / {
+      try_files $uri $uri/ /index.php$is_args$args;
+   }
+
+   location /doc/ {
+      alias /usr/share/doc/;
+      autoindex on;
+      allow 127.0.0.1;
+      allow ::1;
+      deny all;
+   }
+
+   location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+      expires 1y;
+      log_not_found off;
+   }
+
+   location ~ \.php$ {
+      fastcgi_pass unix:/var/run/php5-fpm.sock;
+      fastcgi_index index.php;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      include fastcgi_params;
+      fastcgi_param APPLICATION_ENV development; 
+      fastcgi_read_timeout 30000; 
+   }
+
+   location ~ /\.ht {
+      deny all;
+   }
+}

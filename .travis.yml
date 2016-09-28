@@ -1,0 +1,25 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+  
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    - jackson@jacksonveroneze.com
+
+before_install:
+  - docker build -t jacksonveroneze/dockerphpnginx .
+
+script: nosetests
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push jacksonveroneze/dockerphpnginx;
+    fi
