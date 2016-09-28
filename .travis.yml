@@ -11,15 +11,15 @@ branches:
 
 notifications:
   email:
-    - jackson@jacksonveroneze.com
+    - patrick@microvision.com.br
 
 before_install:
-  - docker build -t jacksonveroneze/dockerphpnginx .
+  - docker build -t patrick/dockerphpnginx .
 
 script: nosetests
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push jacksonveroneze/dockerphpnginx;
+    docker push patrick/dockerphpnginx;
     fi
