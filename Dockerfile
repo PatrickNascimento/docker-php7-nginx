@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Patrick Souza do Nascimento <patrick@microvision.com.br>
+MAINTAINER Patrick Souza do Nascimento <psn1462@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
