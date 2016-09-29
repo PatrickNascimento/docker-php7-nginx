@@ -64,7 +64,7 @@ RUN adduser --disabled-password --gecos '' www \
 
 ADD default /etc/nginx/sites-available/
 
-ADD xdebug.ini /etc/php7.0/mods-available   
+ADD xdebug.ini /etc/php/7.0/mods-available   
 
 ADD nginx.crt /etc/nginx/ssl/
 
