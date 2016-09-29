@@ -48,8 +48,8 @@ RUN sed -i "s/;date.timezone =/date.timezone = America\/Sao_Paulo/" /etc/php/7.0
     && sed -i "s/display_errors = Off/display_errors = On/" /etc/php/7.0/fpm/php.ini \
     && sed -i "s/display_startup_errors = Off/display_startup_errors = On/" /etc/php/7.0/cli/php.ini \
     && sed -i "s/display_startup_errors = Off/display_startup_errors = On/" /etc/php/7.0/fpm/php.ini \
-    && sed -i "s/log_errors = Off/log_errors = On/" /etc/php7.0/cli/php.ini \
-    && sed -i "s/log_errors = Off/log_errors = On/" /etc/php7.0/fpm/php.ini \
+    && sed -i "s/log_errors = Off/log_errors = On/" /etc/php/7.0/cli/php.ini \
+    && sed -i "s/log_errors = Off/log_errors = On/" /etc/php/7.0/fpm/php.ini \
     && sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 5000M/" /etc/php/7.0/cli/php.ini \
     && sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 5000M/" /etc/php/7.0/fpm/php.ini \
     && sed -i "s/post_max_size = 8M/post_max_size = 5000M/" /etc/php/7.0/cli/php.ini \
