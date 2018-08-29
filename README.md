@@ -19,8 +19,7 @@ $ docker run -d -i --name CONTAINER_NAME -p 443:443 -v DIRECTORY_YOUR_HOST:/home
 
 ### Author
 
-Jackson Veroneze - <jackson@jacksonveroneze.com> - <http://jacksonveroneze.com>
-See also the list of [contributors](https://github.com/jacksonveroneze/dockerPhpNginx/graphs/contributors) which participated in this project.
+Patrick Souza do Nascimento
 
 ### License
 
